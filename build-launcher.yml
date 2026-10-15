@@ -1,0 +1,45 @@
+name: Compiler et tester Arcanum Launcher
+on:
+  workflow_dispatch:
+    inputs:
+      owner:
+        description: Propriétaire du dépôt public du jeu
+        required: true
+        type: string
+      repository:
+        description: Nom du dépôt public du jeu
+        required: true
+        type: string
+  push:
+    paths: ['src/**', 'tests/**', 'scripts/**', '.github/workflows/**']
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Tests, compilation autonome et archive
+        shell: pwsh
+        env:
+          GAME_OWNER: ${{ inputs.owner }}
+          GAME_REPOSITORY: ${{ inputs.repository }}
+        run: ./scripts/compiler-launcher.ps1 -Owner $env:GAME_OWNER -Repository $env:GAME_REPOSITORY
+      - name: Test de démarrage WPF
+        shell: pwsh
+        run: |
+          $config = Join-Path $env:LOCALAPPDATA 'Arcanum/Launcher/Configuration'
+          New-Item -ItemType Directory -Force $config | Out-Null
+          @{ AutoCheck = $false; GameDirectory = (Join-Path $env:TEMP 'Arcanum-Smoke-Game') } | ConvertTo-Json | Set-Content (Join-Path $config 'settings.json')
+          $process = Start-Process ./dist/Launcher/ArcanumLauncher.exe -PassThru
+          Start-Sleep -Seconds 8
+          if ($process.HasExited) { throw 'Le launcher a quitté pendant le démarrage.' }
+          $process.CloseMainWindow() | Out-Null
+          if (-not $process.WaitForExit(15000)) { $process.Kill(); throw 'Fermeture WPF impossible.' }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ArcanumLauncher-Windows-x64
+          path: ArcanumLauncher-Windows-x64.zip
