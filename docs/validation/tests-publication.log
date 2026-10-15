@@ -1,0 +1,9 @@
+Release v0.1.0 prête : /tmp/arcanum-ps-tests-2116ecb1-6240-425d-a493-87c9caf851e7/release1
+Vérifiez le contenu du PCK : aucun outil serveur, secret ni donnée personnelle ne doit y être exporté.
+PASS ZIP / exclusions par défaut / SHA-256
+PASS rejet fichier secret explicitement sélectionné
+PASS rejet PCK manquant
+Release v0.1.1 prête : /tmp/arcanum-ps-tests-2116ecb1-6240-425d-a493-87c9caf851e7/embedded
+Vérifiez le contenu du PCK : aucun outil serveur, secret ni donnée personnelle ne doit y être exporté.
+PASS option PCK intégré
+PASS analyse syntaxique PowerShell

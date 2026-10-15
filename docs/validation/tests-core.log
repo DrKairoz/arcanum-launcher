@@ -1,0 +1,34 @@
+PASS Versions numériques / rejet bêta
+PASS ZIP refuse ../escape
+PASS ZIP refuse /absolute
+PASS ZIP refuse C:/evil
+PASS ZIP refuse folder/../../evil
+PASS ZIP refuse a:stream
+PASS ZIP refuse CON.txt
+PASS ZIP refuse a/../b
+PASS ZIP refuse foo. /x
+PASS ZIP refuse a\..\evil
+PASS ZIP refuse .arcanum-install.json
+PASS ZIP refuse saves/player.json
+PASS Premier démarrage sans jeu
+PASS Installation par téléchargement simulé
+PASS Réouverture et persistance
+PASS Mise à jour / sauvegarde / fichiers personnels
+PASS Déjà à jour / pas de régression
+PASS Hors ligne conserve le jeu
+PASS Téléchargement tronqué
+PASS Mauvaise empreinte conserve v2
+PASS Archive invalide
+PASS Jeu ouvert refuse mise à jour
+PASS Annulation préserve le jeu
+PASS Collision fichier personnel refuse remplacement
+PASS Récupération après interruption entre renommages
+PASS Verrou inter-instance
+PASS Pas d’adoption dossier personnel
+PASS API latest stable / notes / assets
+PASS API erreur NotFound
+PASS API erreur Forbidden
+PASS API erreur TooManyRequests
+PASS Espace disque insuffisant
+PASS ZIP malveillant via transaction complète
+SUCCESS: 33 tests

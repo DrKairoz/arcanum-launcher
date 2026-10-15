@@ -1,0 +1,6 @@
+  Determining projects to restore...
+  Restored /workspace/scratch/a75c0d3e2988/ArcanumLauncher/src/Arcanum.Core/Arcanum.Core.csproj (in 23.94 sec).
+  Restored /workspace/scratch/a75c0d3e2988/ArcanumLauncher/src/Arcanum.Launcher/Arcanum.Launcher.csproj (in 23.94 sec).
+  Arcanum.Core -> /workspace/scratch/a75c0d3e2988/ArcanumLauncher/src/Arcanum.Core/bin/Release/net10.0/Arcanum.Core.dll
+  Arcanum.Launcher -> /workspace/scratch/a75c0d3e2988/ArcanumLauncher/src/Arcanum.Launcher/bin/Release/net10.0-windows/win-x64/ArcanumLauncher.dll
+  Arcanum.Launcher -> /workspace/scratch/a75c0d3e2988/ArcanumLauncher/dist/Launcher/
